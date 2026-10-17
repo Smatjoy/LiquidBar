@@ -1,0 +1,123 @@
+{
+  "groups": [
+    {
+      "layers": [
+        {
+          "image-name": "Waveform.svg",
+          "name": "Waveform",
+          "opacity": 1,
+          "blend-mode": "normal",
+          "glass": true,
+          "position": {
+            "scale": 1,
+            "translation-in-points": [
+              0,
+              0
+            ]
+          },
+          "fill-specializations": [
+            {
+              "appearance": "tinted",
+              "value": {
+                "solid": "srgb:1.00000,1.00000,1.00000,1.00000"
+              }
+            }
+          ]
+        }
+      ],
+      "name": "Waveform",
+      "specular": true,
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.4
+      },
+      "translucency": {
+        "enabled": true,
+        "value": 0.2
+      },
+      "lighting": "individual"
+    },
+    {
+      "layers": [
+        {
+          "image-name": "foreground.svg",
+          "name": "Pill",
+          "glass": true,
+          "position": {
+            "scale": 1,
+            "translation-in-points": [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "name": "Pill",
+      "specular": true,
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.35
+      },
+      "blur-material": 0.4,
+      "translucency": {
+        "enabled": true,
+        "value": 0.5
+      },
+      "opacity-specializations": [
+        {
+          "appearance": "dark",
+          "value": 0.75
+        },
+        {
+          "appearance": "tinted",
+          "value": 0.6
+        }
+      ]
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared",
+    "circles": [
+      "watchOS"
+    ]
+  },
+  "fill-specializations": [
+    {
+      "value": {
+        "linear-gradient": [
+          "srgb:0.10588,0.12157,0.29412,1.00000",
+          "srgb:0.22745,0.18039,0.54902,1.00000"
+        ],
+        "orientation": {
+          "start": {
+            "x": 0.5,
+            "y": 1
+          },
+          "stop": {
+            "x": 0.5,
+            "y": 0
+          }
+        }
+      }
+    },
+    {
+      "appearance": "dark",
+      "value": {
+        "linear-gradient": [
+          "srgb:0.04314,0.05098,0.14118,1.00000",
+          "srgb:0.14902,0.12157,0.38039,1.00000"
+        ],
+        "orientation": {
+          "start": {
+            "x": 0.5,
+            "y": 1
+          },
+          "stop": {
+            "x": 0.5,
+            "y": 0
+          }
+        }
+      }
+    }
+  ]
+}
