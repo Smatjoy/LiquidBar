@@ -202,8 +202,10 @@ final class NowPlayingService {
     ignoreStateUntil = Date().addingTimeInterval(0.35)
   }
 
+  /// Commands go to the system's current player, so stay quiet unless it is
+  /// Music (the bridge reports no track for anything else).
   private func send(_ command: String) {
-    guard let input else { return }
+    guard let input, track != nil || command == "refresh" else { return }
     try? input.write(contentsOf: Data((command + "\n").utf8))
   }
 
@@ -234,6 +236,8 @@ final class NowPlayingService {
       track = nil
       audioQuality = nil
       playback = Playback()
+      queue = []
+      currentQueueItemID = nil
       setArtwork(nil, id: nil)
       return
     }

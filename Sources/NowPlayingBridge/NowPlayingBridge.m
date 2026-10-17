@@ -77,6 +77,7 @@ static NSString *hashData(NSData *data) {
 }
 
 static id orNull(id value) { return value ?: [NSNull null]; }
+static NSString *const kMusicBundleID = @"com.apple.Music";
 static void emitQueue(void);
 static void emitQuality(void);
 
@@ -84,6 +85,13 @@ static void emitState(void) {
   MRGetInfo(workQueue, ^(NSDictionary *info) {
     MRGetIsPlaying(workQueue, ^(Boolean isPlaying) {
       void (^finish)(NSString *) = ^(NSString *bundleID) {
+        // Only Apple Music is shown; any other player (a browser tab, a video
+        // app) reads as "nothing playing".
+        if (![bundleID isEqualToString:kMusicBundleID]) {
+          lastQueueTitle = nil;
+          writeLine(@{ @"type": @"state", @"playing": @NO, @"bundleID": orNull(bundleID) });
+          return;
+        }
         NSMutableDictionary *out = [NSMutableDictionary dictionary];
         out[@"type"] = @"state";
         // Boolean is an unsigned char; box it as a real BOOL so JSON gets true/false.
